@@ -15,7 +15,6 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('destination_country', 60);
             $table->string('destination_cities', 120);
             $table->text('description')->nullable();
@@ -24,8 +23,9 @@ class CreateTripsTable extends Migration
             $table->text('number_of_people');
             $table->tinyInteger('children')->unsigned()->default(0);
             $table->string('duration', 20);
-            $table->datetime('departure');
-            $table->datetime('return');
+            $table->date('departure')->nullable();
+            $table->date('return')->nullable();
+            $table->timestamps();
         });
     }
 
